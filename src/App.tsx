@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ImageRoot } from "./pages/image";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
   const [ignoreDislike] = useState<boolean>(() => {
     const params = new URLSearchParams(window.location.search);
     const noDislike = params.get("ndl");
-    return !!noDislike;
+    return noDislike !== "f";
   });
   const [likeOnly] = useState<boolean>(() => {
     const params = new URLSearchParams(window.location.search);
@@ -31,6 +31,18 @@ function App() {
     window.history.replaceState({}, "", "?" + params.toString());
     setScreen(s);
   };
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const callback = (e: any) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", callback);
+    return () => {
+      window.removeEventListener("beforeunload", callback);
+    };
+  }, []);
 
   if (screen === "image") {
     return <ImageRoot itemCount={itemCount} ignoreDislike={ignoreDislike} likeOnly={likeOnly} />;

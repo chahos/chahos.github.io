@@ -4,22 +4,6 @@ import path from "path";
 const JSON_FILE = path.resolve("./src/data/image-source.json");
 
 const newUpdates = `
-0|1|0
-1|1|0
-2|0|0
-3|1|0
-5|1|0
-7|1|0
-8|1|0
-10|1|0
-11|1|0
-12|1|0
-13|1|0
-16|0|1
-17|1|0
-20|0|1
-21|0|1
-22|0|1
 `
 
 // Read existing JSON if available
