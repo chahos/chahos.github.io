@@ -27,7 +27,7 @@ export function ImageItem({ index, image, isLike, isUnlike, onLike, onUnlike }: 
       <span className="absolute top-0 left-0 bg-gray-500/50 px-2 py-1 text-sm text-yellow-300">{index}</span>
       <div
         data-el="pseudo"
-        className={`absolute z-10 inset-0 bg-gray-500/30 group-hover:flex flex items-center justify-center gap-2 flex-col ${focus ? "" : "md:hidden"}`}
+        className={`absolute z-10 inset-0 bg-gray-500/30 group-hover:flex items-center justify-center gap-2 flex-col ${focus ? "flex" : "hidden"}`}
       >
         <button
           className={`h-6 px-3 rounded-xs ${isLike ? "bg-green-500 active:bg-green-800" : "bg-gray-500 active:bg-gray-800"}`}
